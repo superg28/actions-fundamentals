@@ -9,12 +9,17 @@ on:
         required: true
 
 jobs:
-  hello-world:
-    name: Hello World Job
+  Build:
     runs-on: ubuntu-latest
     steps:
-      - name: Echoing Hello World
-        run: echo "Hello world!"
+      - run: |
+          echo "🎉 The job was triggered by event: ${{ github.event_name }}"
+          echo "🔎 The name of your branch is ${{ github.ref }} and your repository is ."
+      - uses: actions/checkout@v3.3.0
+      - name: List files in the repository
+        run: |
+          echo "The repository ${{ github.repository }} contains the following files:"
+          tree
 
   Test:
     runs-on: ubuntu-latest
